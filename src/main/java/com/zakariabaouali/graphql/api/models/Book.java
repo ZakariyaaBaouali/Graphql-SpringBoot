@@ -28,7 +28,7 @@ public class Book {
 
     public static ArrayList<Book> getBooks(){
         ArrayList<Book> books = new ArrayList<>(5);
-        for (int i = 1 ; i <= 3 ; i++)
+        for (int i = 1 ; i < 3 ; i++)
             books.add(new Book(i , "book " + i , i * 2 , 1));
 
         for (int i = 3 ; i <= 5 ; i++)
@@ -43,5 +43,12 @@ public class Book {
                 return book;
         }
         return null;
+    }
+
+    public static Book createBook(String name, int pageCount , int authorId){
+        var books = getBooks();
+        int size = books.size();
+        books.add(new Book(size , name, pageCount , authorId));
+        return  books.get(size);
     }
 }
