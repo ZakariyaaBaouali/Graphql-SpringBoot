@@ -15,16 +15,33 @@ public class Book {
     @Getter
     private Integer pageCount;
 
-    public Book(Integer id , String name , Integer pageCount){
+    @Getter
+    private Integer authorId;
+
+
+    public Book(Integer id , String name , Integer pageCount , Integer authorId){
         this.id = id;
         this.name = name;
         this.pageCount = pageCount;
+        this.authorId = authorId;
     }
 
     public static ArrayList<Book> getBooks(){
         ArrayList<Book> books = new ArrayList<>(5);
-        for (int i = 0 ; i < 5 ; i++)
-            books.add(new Book(i , "book " + i , i * 2));
+        for (int i = 1 ; i <= 3 ; i++)
+            books.add(new Book(i , "book " + i , i * 2 , 1));
+
+        for (int i = 3 ; i <= 5 ; i++)
+            books.add(new Book(i , "book " + i , i * 2 , 3));
         return books;
+    }
+
+    public static Book getBookById(int id){
+        var books = getBooks();
+        for(Book book : books){
+            if(book.getId() == id)
+                return book;
+        }
+        return null;
     }
 }
